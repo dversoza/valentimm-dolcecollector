@@ -17,4 +17,3 @@ class DolcespiderSpider(scrapy.Spider):
                 "points": coffee.css(".product-card__price .price_pp ::text").get(),
                 "description": coffee.css(".product-card__description--short ::text").get(),
             }
-
