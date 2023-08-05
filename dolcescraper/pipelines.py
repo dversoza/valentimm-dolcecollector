@@ -25,5 +25,18 @@ class DolcescraperPipeline:
         else:
             item['price'] = None
 
+        # Clean up the "capsules" value
+        capsules_string = item['capsules']
+        capsules_pattern = r'-?\d+(\.\d+)?'
+        match = re.search(capsules_pattern, capsules_string)
+        if match:
+            matched_float_str = match.group()
+            try:
+                item['capsules'] = float(matched_float_str)
+            except ValueError:
+                item['capsules'] = None
+        else:
+            item['capsules'] = None
+
 
         return item
